@@ -1,0 +1,4 @@
+# MINIMO ASSOLUTO — modificalo poi come vuoi
+- name: DummyAgent
+  role: assistant
+  goal: Say hello
