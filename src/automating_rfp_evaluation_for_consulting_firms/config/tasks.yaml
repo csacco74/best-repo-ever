@@ -1,0 +1,45 @@
+---
+read_documents_task:
+  description: Use the DirectoryReadTool to list all files in the directory {document_folder_path}.
+  expected_output: A list of all files in the directory {document_folder_path}.
+  async_execution: false
+  agent: info_extraction_agent
+extract_information_task:
+  description: Extract detailed information from the documents using PDFSearchTool,
+    DOCXSearchTool, CSVSearchTool, and TXTSearchTool.
+  expected_output: Extracted information from all documents in the directory {document_folder_path}.
+  async_execution: false
+  agent: info_extraction_agent
+  context:
+  - read_documents_task
+categorize_information_task:
+  description: 'Organize the extracted information into categories: technical attachments,
+    disciplinary, and economics.'
+  expected_output: Categorized information ready for summarization.
+  async_execution: false
+  agent: categorization_agent
+  context:
+  - extract_information_task
+summarize_information_task:
+  description: Create concise summaries of the categorized information in Italian.
+  expected_output: Summarized information in Italian.
+  async_execution: false
+  agent: summarization_agent
+  context:
+  - categorize_information_task
+review_and_integrate_task:
+  description: Review and enhance the summaries to ensure accuracy and completeness.
+  expected_output: Verified and enhanced summaries ready for email preparation.
+  async_execution: false
+  agent: senior_bid_manager
+  context:
+  - summarize_information_task
+prepare_email_task:
+  description: Draft a comprehensive email in Italian with the summarized information,
+    ready for management review.
+  expected_output: A draft email in Italian containing all the summarized information,
+    ready for review.
+  async_execution: false
+  agent: email_preparation_agent
+  context:
+  - review_and_integrate_task

@@ -1,0 +1,23 @@
+[project]
+name = "automating_rfp_evaluation_for_consulting_firms"
+version = "0.1.0"
+description = "automating_rfp_evaluation_for_consulting_firms using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.119.0,<1.0.0"
+]
+
+[project.scripts]
+automating_rfp_evaluation_for_consulting_firms = "automating_rfp_evaluation_for_consulting_firms.main:run"
+run_crew = "automating_rfp_evaluation_for_consulting_firms.main:run"
+train = "automating_rfp_evaluation_for_consulting_firms.main:train"
+replay = "automating_rfp_evaluation_for_consulting_firms.main:replay"
+test = "automating_rfp_evaluation_for_consulting_firms.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
