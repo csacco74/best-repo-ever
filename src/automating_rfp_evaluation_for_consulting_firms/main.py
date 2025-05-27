@@ -7,6 +7,11 @@ from automating_rfp_evaluation_for_consulting_firms.crew import AutomatingRfpEva
 # Replace with inputs you want to test with, it will automatically
 # interpolate any tasks and agents information
 
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
+
 def run():
     """
     Run the crew.
